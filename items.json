@@ -1,0 +1,52 @@
+[
+  {
+    "id": "brazil-2010-qualifiers-adriano-9",
+    "type": "shirt",
+    "title": "Brazil #9 \u2013 Adriano (2010 World Cup Qualifiers)",
+    "player": "Adriano",
+    "team": "Brazil",
+    "year": "2010",
+    "competition": "FIFA World Cup Qualifiers (CONMEBOL)",
+    "match": "",
+    "size": "",
+    "condition": "Match-worn (per collector)",
+    "notes": "Includes photos and embedded match footage reference.",
+    "cover": "assets/img/brazil-adriano-1.jpg",
+    "cover_alt": "Brazil #9 Adriano match shirt",
+    "photos": [
+      {
+        "src": "assets/img/brazil-adriano-1.jpg",
+        "alt": "Adriano Brazil shirt photo 1"
+      },
+      {
+        "src": "assets/img/brazil-adriano-2.jpg",
+        "alt": "Adriano Brazil shirt photo 2"
+      },
+      {
+        "src": "assets/img/brazil-adriano-3.jpg",
+        "alt": "Adriano Brazil shirt photo 3"
+      },
+      {
+        "src": "assets/img/brazil-adriano-4.jpg",
+        "alt": "Adriano Brazil shirt photo 4"
+      },
+      {
+        "src": "assets/img/brazil-adriano-5.jpg",
+        "alt": "Adriano Brazil shirt photo 5"
+      },
+      {
+        "src": "assets/img/brazil-adriano-6.jpg",
+        "alt": "Adriano Brazil shirt photo 6"
+      }
+    ],
+    "video": "https://drive.google.com/file/d/1viI440JhD2lilyWDWFl5f1Obw631e-G6/preview",
+    "story": "Adriano\u2019s iconic #9 Brazil shirt from the 2010 World Cup qualifying campaign.",
+    "tags": [
+      "Brazil",
+      "Adriano",
+      "Match-Worn",
+      "Qualifiers",
+      "2010"
+    ]
+  }
+]

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Item — The Matchday Vault</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <h1 class="site-title"><a href="index.html" style="text-decoration:none;color:inherit"><img src="assets/img/logo-vault.svg" alt="" width="26" height="26" style="vertical-align:-4px"> The Matchday Vault</a></h1>
+    </div>
+  </header>
+
+  <main id="main" role="main" class="container flow">
+    <article id="item" class="flow">
+      <header class="flow">
+        <p class="eyebrow" id="item-type"></p>
+        <h2 id="item-title" class="item-title">Loading…</h2>
+        <p id="item-subtitle" class="muted"></p>
+        <dl class="meta" id="item-meta"></dl>
+      </header>
+
+      <section aria-labelledby="photos-heading" class="flow">
+        <h3 id="photos-heading">Photos</h3>
+        <div id="gallery"></div>
+      </section>
+
+      <section aria-labelledby="video-heading" class="flow" id="video-section" hidden>
+        <h3 id="video-heading">Match Video</h3>
+        <div id="video-container" class="video-container"></div>
+      </section>
+
+      <section aria-labelledby="story-heading" class="flow" id="story-section" hidden>
+        <h3 id="story-heading">Story</h3>
+        <p id="story"></p>
+      </section>
+    </article>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <button class="lightbox__close" id="lbClose" aria-label="Close">Close</button>
+    <button class="lightbox__prev" id="lbPrev" aria-label="Previous">‹</button>
+    <img class="lightbox__img" id="lbImg" alt="">
+    <button class="lightbox__next" id="lbNext" aria-label="Next">›</button>
+    <div class="lightbox__caption" id="lbCap"></div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><p>&copy; <span id="year"></span> The Matchday Vault</p></div>
+  </footer>
+
+  <script type="module" src="assets/js/item.js"></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

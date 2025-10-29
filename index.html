@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The Matchday Vault — NFC-ready museum of match-worn shirts & boots." />
+  <title>The Matchday Vault</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="theme-color" content="#0A0A0A">
+</head>
+<body>
+  <!-- Intro overlay -->
+  <div class="intro" id="intro" role="dialog" aria-label="Enter The Matchday Vault">
+    <div class="intro__inner">
+      <object id="introLogo" class="intro__logo" type="image/svg+xml" data="assets/img/logo-vault.svg" aria-label="Vault logo"></object>
+      <div id="introCta" class="intro__cta">Click to Enter</div>
+    </div>
+    <audio id="ambient" src="assets/ambient.wav" loop></audio>
+  </div>
+
+  <header class="site-header" role="banner">
+    <div class="container" style="display:flex;gap:1rem;align-items:center;">
+      <h1 class="site-title"><img src="assets/img/logo-vault.svg" alt="" width="28" height="28" style="vertical-align:-4px"> The Matchday Vault</h1>
+      <nav aria-label="Primary" class="primary-nav" style="margin-left:auto">
+        <ul role="list">
+          <li><a aria-current="page" href="index.html">Home</a></li>
+          <li><a href="import.html">Importer</a></li>
+          <li><a href="add.html">Add Folders</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <p class="eyebrow">NFC • Match-Worn • Player Issue</p>
+        <h2 id="hero-title" class="hero__title">Tap a tag. <span class="hero__accent">Unlock the story.</span></h2>
+        <p class="hero__subtitle">A curated, museum‑style archive of shirts and boots with photos, details, and match footage.</p>
+        <div class="stats" aria-label="Collection stats">
+          <div class="stat"><dt>Total Items</dt><dd id="stat-total">—</dd></div>
+          <div class="stat"><dt>Shirts</dt><dd id="stat-shirts">—</dd></div>
+          <div class="stat"><dt>Boots</dt><dd id="stat-boots">—</dd></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container flow" aria-labelledby="search-title">
+      <h3 id="search-title">Explore the collection</h3>
+      <form id="filters" class="grid" role="search" aria-label="Filter collection" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div><label for="q">Search</label><input id="q" name="q" type="search" placeholder="e.g., Brazil, 2010, COA" style="width:100%;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--border);background:#0F0F0F;color:var(--fg)"></div>
+        <div><label for="type">Type</label><select id="type" name="type" style="width:100%;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--border);background:#0F0F0F;color:var(--fg)"><option value="">All</option><option value="shirt">Shirts</option><option value="boot">Boots</option></select></div>
+        <div><label for="team">Team</label><input id="team" name="team" type="text" placeholder="e.g., Brazil" style="width:100%;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--border);background:#0F0F0F;color:var(--fg)"></div>
+        <div><label for="yearInput">Year</label><input id="yearInput" name="yearInput" type="text" inputmode="numeric" placeholder="e.g., 2010" style="width:100%;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--border);background:#0F0F0F;color:var(--fg)"></div>
+      </form>
+      <div id="grid" class="grid" role="list" style="margin-top:1rem"></div>
+      <p id="no-results" hidden role="status" aria-live="polite" class="muted">No items found. Try different filters.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><p>&copy; <span id="year"></span> The Matchday Vault</p></div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/intro.js" defer></script>
+  <script src="assets/js/collection.js" defer></script>
+</body>
+</html>

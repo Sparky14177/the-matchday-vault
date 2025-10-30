@@ -1,0 +1,13 @@
+:root{--bg:#0A0A0A;--fg:#fff;--gold:#FFC300;--border:#1a1a1a;--link:#bfa25a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6}
+h1,h2,h3{font-family:EB Garamond,Georgia,serif}a{color:var(--link);text-decoration:none}a:hover{color:var(--gold)}
+.container{max-width:92ch;margin:auto;padding:1.5rem}.site-header,.site-footer{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0B0B0B}
+.site-title{margin:0;display:flex;gap:.6rem;align-items:center;font-size:1.2rem}.primary-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap}
+.primary-nav a{display:inline-block;padding:.45rem .75rem;border:1px solid var(--border);border-radius:12px;background:#0f0f0f;color:#fff}
+.hero{min-height:70vh;display:grid;align-items:center;border-bottom:1px solid var(--border)}.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#0E0E0E;border:1px solid var(--border);border-radius:16px;overflow:hidden}.thumb{aspect-ratio:4/3;background:#000;border-bottom:1px solid var(--border)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.96)}.pad{padding:.9rem}.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:#C8C8C8}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:.4rem .8rem;border:1px solid var(--border);border-radius:12px;padding:1rem;background:#0D0D0D}
+.footer-links{position:fixed;right:.75rem;bottom:.5rem;font-size:.9rem;color:#bfa25a;opacity:.85}.footer-links a{margin-left:.75rem;color:#bfa25a}.footer-links a:hover{color:var(--gold)}
+.intro{position:fixed;inset:0;background:#0A0A0A;display:grid;place-items:center;z-index:9999}.intro__logo{width:min(60vmin,320px);aspect-ratio:1;border-radius:24px;cursor:pointer;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+.intro--hide{animation:fadeOut .9s ease forwards}@keyframes fadeOut{to{opacity:0;visibility:hidden}}@keyframes dialTurn{from{transform:rotate(0)}to{transform:rotate(-75deg)}}

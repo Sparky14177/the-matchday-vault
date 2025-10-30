@@ -43,16 +43,26 @@
     </section>
 
     <section class="container">
-      <h3>Collection</h3>
-      <div id="grid" class="grid" role="list"></div>
-      <p id="no-results" class="muted" hidden>No items yet.</p>
+      <h3>Featured Collection</h3>
+
+      <div class="card">
+        <div class="thumb">
+          <img src="logo-vault.jpg" alt="Brazil Adriano #9">
+        </div>
+        <div class="pad">
+          <div class="eyebrow">Match Worn Shirt</div>
+          <h4>Brazil #9 — Adriano (2010 World Cup Qualifiers)</h4>
+          <p class="muted">Brazil National Team • Adriano • 2010</p>
+          <iframe src="https://drive.google.com/file/d/1viI440JhD2lilyWDWFl5f1Obw631e-G6/preview" width="100%" height="240" allow="autoplay"></iframe>
+          <p style="margin-top: .75rem;">📸 Full photo set & match details stored in <a href="https://drive.google.com/drive/folders/1AawQeDGpAa0TFwXv_Er69Wjp1OmKYpdA" target="_blank">Google Drive Vault Folder</a>.</p>
+        </div>
+      </div>
+
     </section>
   </main>
 
   <div class="footer-links">
-    ⚜️ <a href="https://github.com/Sparky14177/the-matchday-vault">View Source on GitHub</a>
-    •
-    ⚜️ <a href="about.html">About This Project</a>
+    ⚜️ <a href="https://github.com/Sparky14177/the-matchday-vault">View Source</a> • ⚜️ <a href="about.html">About</a>
   </div>
 
   <footer class="site-footer">
@@ -63,7 +73,6 @@
 
   <script src="main.js" defer></script>
   <script src="intro.js" defer></script>
-  <script src="collection.js" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');

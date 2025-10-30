@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Matchday Vault</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <!-- Cinematic intro -->
+  <div class="intro" id="intro">
+    <div>
+      <img id="introLogo" class="intro__logo" src="logo-vault.jpg" alt="Vault logo">
+    </div>
+    <audio id="ambient" src="ambient.wav" loop></audio>
+    <audio id="clickS" src="vault-click.wav"></audio>
+  </div>
+
+  <header class="site-header">
+    <div class="container row">
+      <h1 class="site-title">
+        <img src="logo-vault.jpg" alt="" width="30" height="30" style="border-radius:6px">
+        The Matchday Vault
+      </h1>
+      <nav class="primary-nav">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="status.html">Status</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">NFC • Match-Worn • Archive</p>
+        <h2>Tap a tag. <span class="gold">Unlock the story.</span></h2>
+        <p>A museum-style archive of shirts and boots with photos, details, and match footage.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <h3>Collection</h3>
+      <div id="grid" class="grid" role="list"></div>
+      <p id="no-results" class="muted" hidden>No items yet.</p>
+    </section>
+  </main>
+
+  <div class="footer-links">
+    ⚜️ <a href="https://github.com/Sparky14177/the-matchday-vault">View Source on GitHub</a>
+    •
+    ⚜️ <a href="about.html">About This Project</a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> The Matchday Vault</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+  <script src="intro.js" defer></script>
+  <script src="collection.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>

@@ -1,9 +1,0 @@
-The Matchday Vault — GitHub Pages (Mobile Steps)
-1) Sign in at github.com
-2) Create repo: the-matchday-vault (Public)
-3) Repo → Add file → Upload files
-4) Upload all files from the unzipped folder
-5) Settings → Pages → Source: main / (root) → Save
-6) Open: https://Sparky14177.github.io/the-matchday-vault/
-7) Add to Home Screen on your phone
-Tip: Open /status.html to verify assets after upload.

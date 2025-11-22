@@ -7,12 +7,12 @@
     <style>
         /* --- 1. SETTINGS & COLORS --- */
         :root {
-            --bg-color: #121212;       /* Black background */
-            --card-bg: #1e1e1e;        /* Dark Grey cards */
-            --accent-color: #d4af37;   /* Metallic Gold */
+            --bg-color: #121212;       
+            --card-bg: #1e1e1e;        
+            --accent-color: #d4af37;   
             --text-main: #ffffff;      
             --font-main: 'Arial Black', sans-serif;
-            --transition-speed: 2s;    /* How long doors take to open */
+            --transition-speed: 2s;    /* Door duration */
         }
 
         body {
@@ -36,14 +36,8 @@
             z-index: 9999;
             display: flex;
             
-            /* Hide the intro screen after all animations finish */
-            animation: hideIntro 0.1s forwards;
-            animation-delay: calc(1.5s + var(--transition-speed) + 0.1s); /* Lock delay + Door duration + buffer */
+            /* The hiding is now managed by the JavaScript override */
             pointer-events: none; 
-        }
-
-        @keyframes hideIntro {
-            to { opacity: 0; visibility: hidden; }
         }
 
         .door {
@@ -54,16 +48,16 @@
             box-shadow: inset 0 0 50px rgba(0,0,0,0.8); 
         }
         
+        /* Left Door Animation - Stays off-screen (forwards) */
         .left-door { 
             border-right: 2px solid #000; 
-            /* 🔑 FIX: Explicitly use transform and stay in final position (forwards) */
             animation: slideOpenLeft var(--transition-speed) cubic-bezier(0.5, 0, 0.1, 1) forwards;
             animation-delay: 1.5s; 
         }
         
+        /* Right Door Animation - Stays off-screen (forwards) */
         .right-door { 
             border-left: 2px solid #000; 
-            /* 🔑 FIX: Explicitly use transform and stay in final position (forwards) */
             animation: slideOpenRight var(--transition-speed) cubic-bezier(0.5, 0, 0.1, 1) forwards;
             animation-delay: 1.5s;
         }
@@ -111,7 +105,84 @@
             to { opacity: 0; visibility: hidden; }
         }
 
-        /* ➡️ Left door slides left (new keyframe) */
+        /* ➡️ Left door slides left */
         @keyframes slideOpenLeft {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100
+            100% { transform: translateX(-100vw); } 
+        }
+        /* ⬅️ Right door slides right */
+        @keyframes slideOpenRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100vw); } 
+        }
+
+
+        /* --- 3. THE MAIN WEBSITE CONTENT --- */
+        
+        header { text-align: center; padding: 60px 20px; border-bottom: 1px solid #333; }
+        header h1 { color: var(--accent-color); font-size: 3rem; margin: 0; font-family: var(--font-main); text-transform: uppercase; }
+        header p { color: #888; font-size: 1.2rem; margin-top: 10px; }
+
+        section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: var(--font-main); font-size: 2rem; border-left: 5px solid var(--accent-color); padding-left: 15px; margin-bottom: 20px; }
+
+        /* Carousel Styles (placeholders) */
+        .carousel-track { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        .card { min-width: 280px; background: var(--card-bg); border: 1px solid #333; border-radius: 6px; overflow: hidden; }
+        .card-img { width: 100%; height: 200px; background: #000; display: flex; align-items: center; justify-content: center; color: #555; }
+        .card-info { padding: 15px; }
+        .card-title { color: var(--accent-color); font-weight: bold; display: block; }
+        .card-desc { color: #aaa; font-size: 0.9rem; }
+
+    </style>
+</head>
+<body>
+
+    <div id="vault-intro">
+        <div class="door left-door" id="left-door"></div>
+        <div class="vault-lock"></div>
+        <div class="door right-door" id="right-door"></div>
+    </div>
+
+    <header>
+        <h1>The Vault</h1>
+        <p>Matchworn Shirts & Rare Boots Collection</p>
+    </header>
+
+    <section>
+        <h2 class="section-title">BOOT ROOM</h2>
+        <div class="carousel-track">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/000/d4af37?text=Predator+Mania" class="card-img" alt="Boot">
+                <div class="card-info"><span class="card-title">Adidas Predator</span><span class="card-desc">2002 Model - SG</span></div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200/000/d4af37?text=Nike+Vapor" class="card-img" alt="Boot">
+                <div class="card-info"><span class="card-title">Nike Vapor R9</span><span class="card-desc">Chrome/Lime Edition</span></div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Total animation time is 1.5s (lock delay) + 2s (door duration) = 3.5s.
+            // We wait 3.6s to ensure everything is finished.
+            setTimeout(() => {
+                const leftDoor = document.getElementById('left-door');
+                const rightDoor = document.getElementById('right-door');
+                const vaultIntro = document.getElementById('vault-intro');
+
+                // 1. Force the doors to their final off-screen state
+                leftDoor.style.transform = 'translateX(-100vw)';
+                rightDoor.style.transform = 'translateX(100vw)';
+                
+                // 2. Hide the entire container immediately
+                vaultIntro.style.opacity = '0';
+                vaultIntro.style.visibility = 'hidden';
+
+            }, 3600); // 3.6 seconds
+        });
+    </script>
+</body>
+</html>

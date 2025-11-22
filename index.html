@@ -11,8 +11,8 @@
             --card-bg: #1e1e1e;        /* Dark Grey cards */
             --accent-color: #d4af37;   /* Metallic Gold */
             --text-main: #ffffff;      
-            --font-main: 'Arial Black', sans-serif; /* Blocky Vault Font */
-            --door-width-open: 5%;     /* How much door remains on screen when open */
+            --font-main: 'Arial Black', sans-serif; 
+            --door-width-open: 5%;     /* How much door remains on screen when open (5% = 90% opening) */
         }
 
         body {
@@ -22,9 +22,11 @@
             color: var(--text-main);
             font-family: Arial, sans-serif;
             overflow-x: hidden;
-            opacity: 0; /* Hide content initially */
+            
+            /* Hides content until animation is complete */
+            opacity: 0; 
             animation: fadeInContent 0.5s ease-out forwards;
-            animation-delay: 3s; /* Delay until after vault opens */
+            animation-delay: 3.5s; /* CORRECTED: Wait for vault to fully open */
         }
 
         @keyframes fadeInContent {
@@ -42,9 +44,10 @@
             z-index: 9999;
             display: flex;
             pointer-events: none; 
-            /* Hide the intro after its animation */
+
+            /* Hides the entire intro screen after its animation */
             animation: hideIntro 0.1s forwards;
-            animation-delay: 3.5s; /* After doors finish opening */
+            animation-delay: 3.6s; /* CORRECTED: Hide immediately after content fades in */
         }
 
         @keyframes hideIntro {
@@ -63,17 +66,17 @@
 
         .left-door { 
             border-right: 2px solid #000; 
-            transform-origin: right center; /* Pivot point for opening */
+            transform-origin: right center; 
         }
         .right-door { 
             border-left: 2px solid #000; 
-            transform-origin: left center; /* Pivot point for opening */
+            transform-origin: left center; 
         }
 
-        /* Adjusted slideOpen to make them only open partially */
+        /* Slide doors apart partially */
         @keyframes slideOpen {
             0% { width: 50%; }
-            100% { width: var(--door-width-open); } /* Open to specific width */
+            100% { width: var(--door-width-open); } 
         }
 
         /* The Gold Lock Wheel in the center */
@@ -98,12 +101,15 @@
         /* MV Logo inside the lock */
         .vault-logo {
             position: absolute;
-            width: 80%; /* Adjust size of the logo within the lock */
+            width: 80%; 
             height: 80%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-image: url('https://via.placeholder.com/100x100/1a1a1a/d4af37?text=MV'); /* Placeholder for your MV logo */
+            /* === YOU MUST REPLACE THIS URL === */
+            background-image: url('https://via.placeholder.com/100x100/1a1a1a/d4af37?text=MV'); 
+            /* If your logo is uploaded: change to background-image: url('images/mv-logo.png'); */
+            
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -135,7 +141,7 @@
         section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
         .section-title { font-family: var(--font-main); font-size: 2rem; border-left: 5px solid var(--accent-color); padding-left: 15px; margin-bottom: 20px; }
 
-        /* Carousel Styles (simplified for brevity, copy from previous if full carousel needed) */
+        /* Carousel Styles */
         .carousel-track {
             display: flex;
             gap: 20px;
@@ -166,7 +172,8 @@
     <div id="vault-intro">
         <div class="door left-door"></div>
         <div class="vault-lock">
-            <div class="vault-logo"></div> </div>
+            <div class="vault-logo"></div>
+        </div>
         <div class="door right-door"></div>
     </div>
 

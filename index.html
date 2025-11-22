@@ -7,12 +7,11 @@
     <style>
         /* --- 1. SETTINGS & COLORS --- */
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --accent-color: #d4af37;
-            --text-main: #ffffff;
+            --bg-color: #121212;       /* Black background */
+            --card-bg: #1e1e1e;        /* Dark Grey cards */
+            --accent-color: #d4af37;   /* Metallic Gold */
+            --text-main: #ffffff;      
             --font-main: 'Arial Black', sans-serif;
-            --transition-duration: 2s; /* How long the doors take to open */
         }
 
         body {
@@ -23,13 +22,11 @@
             font-family: Arial, sans-serif;
             overflow-x: hidden;
             
-            /* Content starts invisible */
-            opacity: 0;
-            transition: opacity 0.5s ease-in var(--transition-duration); 
-            /* Content waits exactly 2s (door duration) before fading in */
+            /* Content starts visible but is covered by the intro */
+            opacity: 1; 
         }
 
-        /* --- 2. VAULT INTRO STYLES --- */
+        /* --- 2. THE VAULT INTRO ANIMATION --- */
         
         #vault-intro {
             position: fixed;
@@ -40,38 +37,86 @@
             z-index: 9999;
             display: flex;
             
-            /* The intro fades out after the animation is complete */
-            opacity: 1;
-            transition: opacity 0.5s ease-out calc(var(--transition-duration) + 0.5s);
+            /* Animation to hide the entire intro screen */
+            animation: hideIntro 0.1s forwards;
+            animation-delay: 3.5s; /* Hide after all other animations finish */
+            pointer-events: none; 
+        }
+
+        @keyframes hideIntro {
+            to { opacity: 0; visibility: hidden; }
         }
 
         .door {
             width: 50%;
             height: 100%;
             background: linear-gradient(135deg, #1a1a1a, #2a2a2a); 
+            position: relative;
             box-shadow: inset 0 0 50px rgba(0,0,0,0.8); 
-            /* Use the transition duration defined in :root */
-            transition: transform var(--transition-duration) cubic-bezier(0.5, 0, 0.1, 1);
+            
+            /* Animation applied */
+            animation: slideOpen 2s cubic-bezier(0.5, 0, 0.1, 1) forwards;
+            animation-delay: 1.5s; /* Wait for lock to spin first */
         }
 
         .left-door { border-right: 2px solid #000; }
         .right-door { border-left: 2px solid #000; }
 
-        /* The class applied by JavaScript */
-        .door.open-door {
-            /* Moves the door 100% of its own width to the left/right */
-            transform: translateX(-100%);
-        }
-        .right-door.open-door {
-            transform: translateX(100%);
-        }
-        
-        /* The body class applied by JavaScript */
-        body.ready {
-            opacity: 1;
+        /* The Gold Lock Wheel in the center */
+        .vault-lock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border: 8px solid var(--accent-color);
+            border-radius: 50%;
+            background: #111;
+            z-index: 10000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); 
+            
+            /* Animation to spin and then vanish */
+            animation: 
+                spinLock 1.5s cubic-bezier(0.5, 0, 0.5, 1) forwards,
+                fadeOutLock 0.2s linear forwards 1.6s; 
         }
 
-        /* --- 3. MAIN WEBSITE CONTENT --- */
+        /* Lock Placeholder (Restore the MV logo placeholder) */
+        .vault-lock::before {
+            content: 'MV'; /* Simple text placeholder */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-main);
+            color: var(--accent-color);
+            font-size: 24px;
+        }
+
+        /* --- ANIMATION KEYFRAMES --- */
+        
+        /* Spin the lock */
+        @keyframes spinLock {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(720deg); }
+        }
+
+        /* Make the lock disappear */
+        @keyframes fadeOutLock {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* Slide doors apart (uses transform for reliability) */
+        @keyframes slideOpen {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100vw); } /* Opens wide, off-screen */
+        }
+        .left-door { animation-name: slideOpen; }
+        .right-door { animation-name: slideOpen; animation-direction: reverse; } /* Slides in opposite direction */
+
+
+        /* --- 3. THE MAIN WEBSITE CONTENT --- */
         
         header { text-align: center; padding: 60px 20px; border-bottom: 1px solid #333; }
         header h1 { color: var(--accent-color); font-size: 3rem; margin: 0; font-family: var(--font-main); text-transform: uppercase; }
@@ -94,46 +139,29 @@
 <body>
 
     <div id="vault-intro">
-        <div class="door left-door" id="left-door"></div>
-        <div class="door right-door" id="right-door"></div>
+        <div class="door left-door"></div>
+        <div class="vault-lock"></div>
+        <div class="door right-door"></div>
     </div>
 
     <header>
         <h1>The Vault</h1>
         <p>Matchworn Shirts & Rare Boots Collection</p>
-    </p>
+    </header>
+
     <section>
         <h2 class="section-title">BOOT ROOM</h2>
         <div class="carousel-track">
             <div class="card">
-                <img src="images/predator-mania.jpg" class="card-img" alt="Boot">
+                <img src="https://via.placeholder.com/300x200/000/d4af37?text=Predator+Mania" class="card-img" alt="Boot">
                 <div class="card-info"><span class="card-title">Adidas Predator</span><span class="card-desc">2002 Model - SG</span></div>
             </div>
             <div class="card">
-                <img src="images/vapor-r9.jpg" class="card-img" alt="Boot">
+                <img src="https://via.placeholder.com/300x200/000/d4af37?text=Nike+Vapor" class="card-img" alt="Boot">
                 <div class="card-info"><span class="card-title">Nike Vapor R9</span><span class="card-desc">Chrome/Lime Edition</span></div>
             </div>
         </div>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Get all elements
-            const leftDoor = document.getElementById('left-door');
-            const rightDoor = document.getElementById('right-door');
-            const body = document.body;
-            
-            // --- The entire animation starts with these 3 lines ---
-            
-            // 1. Instantly open the doors (CSS handles the 2s movement)
-            leftDoor.classList.add('open-door');
-            rightDoor.classList.add('open-door');
-
-            // 2. Instantly reveal the body (CSS handles the 2s delay + fade in)
-            body.classList.add('ready');
-
-            // --- The intro div fades out automatically using pure CSS timing ---
-        });
-    </script>
 </body>
 </html>
